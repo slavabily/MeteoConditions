@@ -8,13 +8,25 @@
 import SwiftUI
 
 struct ContentView: View {
-    var body: some View {
-        Text("Hello, world!").padding()
+  let stations = WeatherInformation()
+  
+  var body: some View {
+    NavigationView {
+      VStack {
+        List(stations!.stations) { station in
+          NavigationLink(destination: StationInfo(station: station)) {
+            Text("\(station.name)")
+          }
+        }
+        Text("Source: https://www.ncdc.noaa.gov/cdo-web/datasets")
+          .italic()
+      }.navigationBarTitle(Text("Weather Stations"))
     }
+  }
 }
 
 struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-    }
+  static var previews: some View {
+    ContentView()
+  }
 }
