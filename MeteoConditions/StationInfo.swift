@@ -11,25 +11,20 @@ struct StationInfo: View {
   var station: WeatherStation
   
     var body: some View {
-      VStack {
-        StationHeader(station: self.station)
-        TabView {
-          TemperatureTab(station: self.station)
-            .tabItem({
-              Image(systemName: "thermometer")
-              Text("Temperatures")
-            })
-          SnowfallTab(station: self.station)
-            .tabItem({
-              Image(systemName: "snow")
-              Text("Snowfall")
-            })
-            PrecipitationTab(station: self.station)
-            .tabItem({
-              Image(systemName: "cloud.rain")
-              Text("Precipitation")
-            })
-        }
+        VStack {
+            StationHeader(station: self.station)
+            TabView {
+                TemperatureTab(station: self.station)
+                    .tabItem({
+                        Image(systemName: "thermometer")
+                        Text("Temperatures")
+                    })
+                HumidityTab(station: station)
+                    .tabItem {
+                        Image(systemName: "cloud.fog.fill")
+                        Text("Humidities")
+                    }
+            }
         }.navigationBarTitle(Text("\(station.name)"), displayMode: .inline).padding()
     }
 }

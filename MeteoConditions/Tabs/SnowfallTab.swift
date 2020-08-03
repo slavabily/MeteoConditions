@@ -12,7 +12,7 @@ struct SnowfallTab: View {
   
   var body: some View {
     VStack {
-      Text("Snowfall for 2018")
+      Text("Snowfall for 2020")
         SnowfallChart(measurements: station.measurements)
     }.padding()
   }

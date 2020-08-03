@@ -12,7 +12,7 @@ struct TemperatureTab: View {
   
   var body: some View {
     VStack {
-      Text("Temperatures for 2018")
+      Text("Temperatures for 2020")
         TemperatureChart(measurements: station.measurements)
     }.padding()
   }

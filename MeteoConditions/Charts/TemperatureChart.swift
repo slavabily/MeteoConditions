@@ -43,7 +43,7 @@ struct TemperatureChart: View {
     }
     
     func tempLabelOffset(_ line: Int, height: CGFloat) -> CGFloat {
-        height - self.tempOffset(Double(line * 10), degreeHeight: self.degreeHeight(height, range: 110))
+        height - self.tempOffset(Double(line * 10), degreeHeight: self.degreeHeight(height, range: 40))
     }
     
     func offsetFirstOfMonth(_ month: Int, width: CGFloat) -> CGFloat {
@@ -64,7 +64,7 @@ struct TemperatureChart: View {
             ForEach(self.measurements) { measurement in
                 Path { p in
                     let dWidth = self.dayWidth(reader.size.width, count: 365)
-                    let dHeight = self.degreeHeight(reader.size.height, range: 110)
+                    let dHeight = self.degreeHeight(reader.size.height, range: 40)
                     
                     let dOffset = self.dayOffset(measurement.date, dWidth: dWidth)
                     let lowOffset = self.tempOffset(measurement.low, degreeHeight: dHeight)
@@ -78,7 +78,7 @@ struct TemperatureChart: View {
                 startPoint: UnitPoint(x: 0, y: 1),
                 endPoint: UnitPoint(x: 0, y: 0)))
             }
-            ForEach(-1..<11) { line in
+            ForEach(-1..<4) { line in
                 Group {
                     Path { path in
                         let y = self.tempLabelOffset(line, height: reader.size.height)
